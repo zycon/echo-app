@@ -39,7 +39,7 @@ class EchoApplicationTests {
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/test")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
-		assertTrue(mvcResult.getResponse().getContentAsString().equalsIgnoreCase("Hello Galaxy"));
+		assertTrue(mvcResult.getResponse().getContentAsString().equalsIgnoreCase("Hello Universe"));
     }
 
 }
