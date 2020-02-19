@@ -6,7 +6,7 @@ pipeline {
                 sh "/usr/local/bin/mvn clean test"
                 echo "Test Success"
                 withSonarQubeEnv('sonar-local') {
-                    sh 'mvn mvn clean package sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000'
+                    sh 'mvn package sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000'
                 }
 
             }
