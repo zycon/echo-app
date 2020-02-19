@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                /usr/local/bin/mvn clean install
+                sh "/usr/local/bin/mvn clean install"
             }
         }
     }
