@@ -10,9 +10,15 @@ pipeline {
                 withSonarQubeEnv('Local SonarQube Server') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000'
                 }
-                def qg = waitForQualityGate("Waiting for the SonarQube Response")
+
+            }
+        }
+        stage("Quality Gate") {
+            timeout(time: 1, unit: 'HOURS') {
+                // Just in case something goes wrong, pipeline will be killed after a timeout
+                def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
                 if (qg.status != 'OK') {
-                    error "Quality Gate Failed , Please Check the sonarQube: ${qg.status}"
+                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
                 }
             }
         }
