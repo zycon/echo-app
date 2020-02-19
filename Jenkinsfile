@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "/usr/local/bin/mvn clean install"
+                sh "/usr/local/bin/mvn clean test"
+                echo "Test Success"
+                sh "/usr/local/bin/mvn install"
             }
         }
     }
