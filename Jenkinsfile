@@ -21,8 +21,8 @@ pipeline {
 }
 
 
-def buildApp() {
-        withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
-        archiveArtifacts '**/target/echo.jar'
-        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
-}
+//def buildApp() {
+//        withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
+//        archiveArtifacts '**/target/echo.jar'
+//        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
+//}
