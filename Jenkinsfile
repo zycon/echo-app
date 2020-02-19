@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     stages {
         stage("Build App") {
             agent any
