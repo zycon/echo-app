@@ -11,7 +11,11 @@ pipeline {
     stages {
         stage("Build App") {
             agent any
-            steps { buildApp() }
+            steps {
+                script {
+                    /usr/local/bin/mvn clean install
+                }
+            }
         }
     }
 }
