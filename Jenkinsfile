@@ -7,7 +7,7 @@ pipeline {
                 echo "Test Success"
                 sh "/usr/local/bin/mvn install"
                 echo "Maven Build Success"
-                withSonarQubeEnv('Local SonarQube Server') {
+                withSonarQubeEnv('sonar-local') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000'
                 }
 
