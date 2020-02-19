@@ -15,6 +15,7 @@ pipeline {
         }
         stage("Quality Gate") {
             steps {
+                echo "Waiting for Gate"
                 def qg = waitForQualityGate()
                 if (qg.status != 'OK') {
                     error "Pipeline aborted due to quality gate failure: ${qg.status}"
