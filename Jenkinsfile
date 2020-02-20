@@ -26,9 +26,11 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
-                sh "mv ./target/echo.jar ./data"
-                dockerImage = docker.build("$dockerImageTag")
+                script {
+                    def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
+                    sh "mv ./target/echo.jar ./data"
+                    dockerImage = docker.build("$dockerImageTag")
+                }
             }
         }
     }
