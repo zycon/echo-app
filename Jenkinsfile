@@ -27,7 +27,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo pwd
                     def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
                     dockerImage = docker.build("$dockerImageTag", "./")
                 }
