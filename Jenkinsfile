@@ -1,10 +1,6 @@
 #!groovy
 
 pipeline {
-    def dockerImage
-
-    def dockerImageName = "hello-world-java"
-    def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
     agent any
     stages {
         stage('build') {
@@ -30,7 +26,9 @@ pipeline {
         }
     }
     stage('Build Docker Image') {
-        // build docker image
+        def dockerImage
+        def dockerImageName = "hello-world-java"
+        def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
         sh "whoami"
         sh "ls -all /var/run/docker.sock"
         sh "mv ./target/echo.jar ./data"
