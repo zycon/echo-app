@@ -22,9 +22,5 @@ pipeline {
                 }
             }
         }
-        stage("Docker Build") {
-            dir('target'){
-            }
-        }
     }
 }
