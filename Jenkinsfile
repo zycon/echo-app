@@ -24,15 +24,16 @@ pipeline {
                 }
             }
         }
-    }
-    stage('Build Docker Image') {
-        def dockerImage
-        def dockerImageName = "hello-world-java"
-        def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
-        sh "whoami"
-        sh "ls -all /var/run/docker.sock"
-        sh "mv ./target/echo.jar ./data"
+        stage('Build Docker Image') {
+            def dockerImage
+            def dockerImageName = "hello-world-java"
+            def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
+            sh "whoami"
+            sh "ls -all /var/run/docker.sock"
+            sh "mv ./target/echo.jar ./data"
 
-        dockerImage = docker.build("hello-world-java")
+            dockerImage = docker.build("hello-world-java")
+        }
     }
+
 }
