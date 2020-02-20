@@ -6,7 +6,7 @@ pipeline {
         stage('build') {
             steps {
                 withSonarQubeEnv('sonar-local') {
-                    sh 'mvn clean package sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000'
+                    sh 'mvn clean package sonar:sonar -Dsonar.projectKey=echo-app -Dsonar.host.url=http://localhost:9000 -DskipTests'
                 }
 
             }
