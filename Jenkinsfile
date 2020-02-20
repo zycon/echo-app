@@ -24,15 +24,15 @@ pipeline {
                 }
             }
         }
-//        stage('Build Docker Image') {
-//            steps {
-//                script {
-//                    def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
-//                    sh "mv ./target/echo.jar ./data"
-//                    dockerImage = docker.build("$dockerImageTag")
-//                }
-//            }
-//        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
+                    sh "mv ./target/echo.jar ./data"
+                    dockerImage = docker.build("$dockerImageTag")
+                }
+            }
+        }
     }
 
 }
