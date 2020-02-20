@@ -26,13 +26,9 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                def dockerImage
-                def dockerImageName = "hello-world-java"
-                def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
-                sh "whoami"
-                sh "ls -all /var/run/docker.sock"
+                def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
                 sh "mv ./target/echo.jar ./data"
-                dockerImage = docker.build("hello-world-java")
+                dockerImage = docker.build("$dockerImageTag")
             }
         }
     }
