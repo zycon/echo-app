@@ -1,6 +1,9 @@
 pipeline {
     agent any
     stages {
+        def dockerImageName = "tibinlukose/echo-app"
+        def dockerImageTag = "${dockerImageName}:${env.BUILD_NUMBER}"
+
         stage('build') {
             steps {
                 withSonarQubeEnv('sonar-local') {
@@ -20,6 +23,11 @@ pipeline {
                         if (status != "OK") throw new hudson.AbortException('Quality Check Failed, Please check report')
                     }
                 }
+            }
+        }
+        stage("Docker Build") {
+            dir('target'){
+                echo dockerImageTag
             }
         }
     }
