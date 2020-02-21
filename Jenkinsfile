@@ -33,6 +33,15 @@ pipeline {
                 }
             }
         }
+        stage('Running Docker') {
+            steps {
+                script {
+                    def dockerImageTag = "tibinlukose/echo-app:${env.BUILD_NUMBER}"
+                    dockerImage = docker.build("$dockerImageTag", "./")
+                    dockerImage.push();
+                }
+            }
+        }
     }
 
 }

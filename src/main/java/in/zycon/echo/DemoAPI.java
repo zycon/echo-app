@@ -14,7 +14,7 @@ public class DemoAPI {
         return "Hello Universe";
     }
 
-    @DeleteMapping("/test")
+    @RequestMapping("/test")
     public String newGlobalApi() {
         return "Hello Galaxy";
     }
