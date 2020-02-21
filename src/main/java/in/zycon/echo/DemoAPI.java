@@ -16,6 +16,6 @@ public class DemoAPI {
 
     @RequestMapping("/test")
     public String newGlobalApi() {
-        return "Hello Galaxy";
+        return "Hello Galaxyss";
     }
 }
