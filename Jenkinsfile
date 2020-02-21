@@ -15,6 +15,7 @@ pipeline {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     script {
+                        sleep(time:30,unit:"SECONDS")
                         sh "curl GET -H 'Accept: application/json' http://localhost:9000/api/qualitygates/project_status?projectKey=echo-app > status.json"
                         def statusJson = readJSON file: 'status.json'
                         def status = statusJson.projectStatus.status
