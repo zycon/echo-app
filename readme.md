@@ -8,3 +8,5 @@ Spring boot demo app with REST end-points
   
 Default PORT : 8080
 Docker : docker run -p 8080:8080 spring-echo:v1
+
+Docker , SonarQube, and Jenkins must be configured 
